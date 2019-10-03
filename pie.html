@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	.:: Pie Chart ::.</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+	<!-- Start Canvas -> Desenhar elementos gráficos usando JS -->
+	<canvas id="piechart" class="pie-chart"></canvas>
+
+	<!-- Include Chart JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	<script>
+		// ctx = Context
+		var ctx2 = document.getElementsByClassName("pie-chart");
+
+		var myPieChart = new Chart(ctx2, {
+    		type: 'pie',
+    		data: {
+				datasets: [
+				{
+					data: [15, 80, 50],
+					backgroundColor: [
+						"rgb(255, 99, 132)",
+						"rgb(54, 162, 235)",
+						"rgb(255, 205, 86)"
+					],
+					borderWidth: 5,
+				}],
+
+				// These labels appear in the legend and in the tooltips when hovering different arcs
+			    labels: ['Red','Blue','Yellow']
+			},
+			options: {
+				title: {
+					display: true,
+					text: "RELATÓRIO DE VIRUS ANUAL"
+				}
+			},
+			
+		});
+
+
+	</script>
+
+	<!-- LINKS
+		ChartJs Docs - http://www.chartjs.org/docs/
+		CDN ChartJs - https://cdnjs.com/libraries/Chart.js
+		ChartJs Github - https://github.com/chartjs/Chart.js
+
+	 -->
+
+	<!-- -->
+</body>
+</html>

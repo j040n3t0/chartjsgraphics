@@ -1,0 +1,46 @@
+div.div-line-chart {
+	font-size: 20px;
+	position: relative;
+	width: 400px;
+	height: 300px;
+	border: 1px solid #4CAF50;
+}
+iframe.div-line-chart {
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #4CAF50;
+}
+div.div-pie-chart {
+	font-size: 20px;
+	position: absolute;
+	/*right: 100px; 
+	top: 100px; */
+	width: 300px; 
+	height: 300px; 
+	border: 1px solid #4CAF50;
+}
+iframe.div-pie-chart {
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #4CAF50;
+}
+*
+{
+	box-sizing: border-box;
+}
+
+.box {
+		float: left;
+		width: 25%;
+		padding: 50px;
+}
+
+.clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+}

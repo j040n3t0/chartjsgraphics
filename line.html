@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	.:: Line Chart ::.</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+	<!-- Start Canvas -> Desenhar elementos gráficos usando JS
+	<canvas class="line-chart" height="50vw" width="100vw"></canvas>-->
+	<canvas class="line-chart"></canvas>
+
+	<!-- Include Chart JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	<script>
+		// ctx = Context
+		var ctx = document.getElementsByClassName("line-chart");
+
+		// Type, Data(json, array) e Options
+		var chartGraph = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
+				datasets: [
+					{
+						label: "TAXA DE CLIQUES - 2017",
+						data: [5,10,5,14,20,15,6,14,8,12,15,5,10],
+						borderWidth: 6,
+						borderColor: 'rgba(77,166,253,0.85)',
+						backgroundColor: 'transparent',
+					},
+					{
+						label: "TAXA DE CLIQUES - 2018",
+						data: [9,14,11,6,5,4,3,8,11,10,13,18,6],
+						borderWidth: 6,
+						borderColor: 'rgba(6,204,6,0.85)',
+						backgroundColor: 'transparent',
+					}
+				]
+			},
+			options: {
+				title: {
+					display: true,
+					text: "RELATÓRIO DE INCIDENTES ANUAL"
+				}
+			},
+
+		});
+
+	</script>
+
+	<!-- LINKS
+		ChartJs Docs - http://www.chartjs.org/docs/
+		CDN ChartJs - https://cdnjs.com/libraries/Chart.js
+		ChartJs Github - https://github.com/chartjs/Chart.js
+
+	 -->
+
+</body>
+</html>

@@ -1,141 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>	.:: Danger ::.</title>
+	<title>	.:: Chart JS - EX::.</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="widt=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!-- <style type="text/css">
-		#piechart {
-			margin: 20px;
-            padding: 20px;
-            background: #ffffff;
-            border: thin inset #aaaaaa;
-            width: 50px;
-            height: 50px;
-		}
-	</style> -->
+	<link rel="stylesheet" type="text/css" href="jschart.css">
 </head>
 <body>
-	<!-- Start Canvas -> Desenhar elementos gráficos usando JS -->
-	<canvas id="piechart" class="pie-chart" height="50vw" width="200vw"></canvas>
-
-	<!-- Start Canvas -> Desenhar elementos gráficos usando JS 
-	<canvas class="line-chart"></canvas> -->
-
-	<!-- Include Chart JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-	<!-- 
-	<script>
-		// ctx = Context
-		var ctx = document.getElementsByClassName("line-chart");
-
-		// Type, Data(json, array) e Options
-		var chartGraph = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
-				datasets: [
-					{
-						label: "TAXA DE CLIQUES - 2017",
-						data: [5,10,5,14,20,15,6,14,8,12,15,5,10],
-						borderWidth: 6,
-						borderColor: 'rgba(77,166,253,0.85)',
-						backgroundColor: 'transparent',
-					},
-					{
-						label: "TAXA DE CLIQUES - 2018",
-						data: [9,14,11,6,5,4,3,8,11,10,13,18,6],
-						borderWidth: 6,
-						borderColor: 'rgba(6,204,6,0.85)',
-						backgroundColor: 'transparent',
-					}
-				]
-			},
-			options: {
-				title: {
-					display: true,
-					fontsize: 20,
-					text: "RELATÓRIO DE CRT ANUAL"
-				}
-			},
-
-		});
-
-	</script>
--->
-	<script>
-		// Link de referência: https://jsfiddle.net/h1z7gtaw/
-		var pieOptions = {
-			title: {
-					display: true,
-					fontsize: 20,
-					text: "MY FIRST PIE CHART!!"
-			},
-			events: false,
-			animation: {
-				duration: 500,
-				easing: "easeOutQuart",
-				onComplete: function () {
-					var ctx = this.chart.ctx;
-					ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-					ctx.textAlign = 'center';
-					ctx.textBaseline = 'bottom';
-
-					this.data.datasets.forEach(function (dataset) {
-
-						for (var i = 0; i < dataset.data.length; i++) {
-							var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
-							total = dataset._meta[Object.keys(dataset._meta)[0]].total,
-							mid_radius = model.innerRadius + (model.outerRadius - model.innerRadius)/2,
-							start_angle = model.startAngle,
-							end_angle = model.endAngle,
-							mid_angle = start_angle + (end_angle - start_angle)/2;
-
-							var x = mid_radius * Math.cos(mid_angle);
-							var y = mid_radius * Math.sin(mid_angle);
-
-							ctx.fillStyle = '#fff';
-							if (i == 3){ // Darker text color for lighter background
-								ctx.fillStyle = '#444';
-							}
-							var percent = String(Math.round(dataset.data[i]/total*100)) + "%";
-							ctx.fillText(dataset.data[i], model.x + x, model.y + y);
-							// Display percent in another line, line break doesn't work for fillText
-							ctx.fillText(percent, model.x + x, model.y + y + 15);
-						}
-					});               
-				}
-			}
-		};
-		// ctx = Context
-		var ctx2 = document.getElementsByClassName("pie-chart");
-
-		var myPieChart = new Chart(ctx2, {
-    		type: 'pie',
-    		data: {
-				datasets: [
-				{
-					data: [15, 80, 50],
-					backgroundColor: [
-						"rgb(255, 99, 132)",
-						"rgb(54, 162, 235)",
-						"rgb(255, 205, 86)"
-					],
-					borderWidth: 5,
-				}],
-
-				// These labels appear in the legend and in the tooltips when hovering different arcs
-			    labels: ['Red','Blue','Yellow']
-			},
-			options: pieOptions
-			
-		});
-
-
-	</script>
-
+	<h1> Create Graphs with Chart JS
+	<div class="clearfix">
+  		<div class="box">
+  			<div class="div-line-chart">
+				<iframe class="div-line-chart" src="line.html" scrolling="no"></iframe>
+			</div>
+		</div>
+		<div class="box">
+			<div class="div-pie-chart">
+				<iframe class="div-pie-chart" src="pie.html" scrolling="no"></iframe>
+			</div>
+  		</div>
+	</div>
+	
 	<!-- LINKS
 		ChartJs Docs - http://www.chartjs.org/docs/
 		CDN ChartJs - https://cdnjs.com/libraries/Chart.js
@@ -143,6 +28,5 @@
 
 	 -->
 
-	<!-- -->
 </body>
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	.:: Pie Chart - Labels ::.</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="widt=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+	<!-- Start Canvas -> Desenhar elementos gráficos usando JS -->
+	<canvas id="piechart" class="pie-chart" height="20vw" width="100vw"></canvas>
+
+	<!-- Include Chart JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	
+	<script>
+		// Link de referência: https://jsfiddle.net/h1z7gtaw/
+		var pieOptions = {
+			title: {
+					display: true,
+					fontsize: 20,
+					text: "MY FIRST PIE CHART!!"
+			},
+			events: false,
+			animation: {
+				duration: 500,
+				easing: "easeOutQuart",
+				onComplete: function () {
+					var ctx = this.chart.ctx;
+					ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+					ctx.textAlign = 'center';
+					ctx.textBaseline = 'bottom';
+
+					this.data.datasets.forEach(function (dataset) {
+
+						for (var i = 0; i < dataset.data.length; i++) {
+							var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+							total = dataset._meta[Object.keys(dataset._meta)[0]].total,
+							mid_radius = model.innerRadius + (model.outerRadius - model.innerRadius)/2,
+							start_angle = model.startAngle,
+							end_angle = model.endAngle,
+							mid_angle = start_angle + (end_angle - start_angle)/2;
+
+							var x = mid_radius * Math.cos(mid_angle);
+							var y = mid_radius * Math.sin(mid_angle);
+
+							ctx.fillStyle = '#fff';
+							if (i == 3){ // Darker text color for lighter background
+								ctx.fillStyle = '#444';
+							}
+							// Display the labels
+							ctx.fillText(dataset.data[i], model.x + x, model.y + y);
+							// Display percent in another line, line break doesn't work for fillText
+							var percent = String(Math.round(dataset.data[i]/total*100)) + "%";
+							ctx.fillText(percent, model.x + x, model.y + y + 15);
+						}
+					});               
+				}
+			}
+		};
+		// ctx = Context
+		var ctx2 = document.getElementsByClassName("pie-chart");
+
+		var myPieChart = new Chart(ctx2, {
+    		type: 'pie',
+    		data: {
+				datasets: [
+				{
+					data: [15, 80, 50],
+					backgroundColor: [
+						"rgb(255, 99, 132)",
+						"rgb(54, 162, 235)",
+						"rgb(255, 205, 86)"
+					],
+					borderWidth: 5,
+				}],
+
+				// These labels appear in the legend and in the tooltips when hovering different arcs
+			    labels: ['Red','Blue','Yellow']
+			},
+			options: pieOptions
+			
+		});
+
+
+	</script>
+
+	<!-- LINKS
+		ChartJs Docs - http://www.chartjs.org/docs/
+		CDN ChartJs - https://cdnjs.com/libraries/Chart.js
+		ChartJs Github - https://github.com/chartjs/Chart.js
+
+	 -->
+</body>
+</html>
